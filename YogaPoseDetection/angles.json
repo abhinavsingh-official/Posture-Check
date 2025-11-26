@@ -1,0 +1,1094 @@
+{
+    "boat-pose": {
+        "left_knee": {
+            "angle_min": 139.4,
+            "angle_max": 189.4,
+            "tip": "Adjust your left knee."
+        },
+        "right_knee": {
+            "angle_min": 137.5,
+            "angle_max": 187.5,
+            "tip": "Adjust your right knee."
+        },
+        "left_elbow": {
+            "angle_min": 70.9,
+            "angle_max": 120.9,
+            "tip": "Adjust your left elbow."
+        },
+        "right_elbow": {
+            "angle_min": 85.3,
+            "angle_max": 135.3,
+            "tip": "Adjust your right elbow."
+        },
+        "left_shoulder": {
+            "angle_min": 61.9,
+            "angle_max": 111.9,
+            "tip": "Adjust your left shoulder."
+        },
+        "right_shoulder": {
+            "angle_min": 60.2,
+            "angle_max": 110.2,
+            "tip": "Adjust your right shoulder."
+        },
+        "left_hip": {
+            "angle_min": 65.5,
+            "angle_max": 115.5,
+            "tip": "Adjust your left hip."
+        },
+        "right_hip": {
+            "angle_min": 49.5,
+            "angle_max": 99.5,
+            "tip": "Adjust your right hip."
+        },
+        "spine": {
+            "angle_min": 39.3,
+            "angle_max": 89.3,
+            "tip": "Adjust your spine."
+        },
+        "neck": {
+            "angle_min": 84.1,
+            "angle_max": 134.1,
+            "tip": "Adjust your neck."
+        }
+    },
+    "bow-pose": {
+        "left_knee": {
+            "angle_min": 90.0,
+            "angle_max": 140.0,
+            "tip": "Adjust your left knee."
+        },
+        "right_knee": {
+            "angle_min": 80.1,
+            "angle_max": 130.1,
+            "tip": "Adjust your right knee."
+        },
+        "left_elbow": {
+            "angle_min": 128.9,
+            "angle_max": 178.9,
+            "tip": "Adjust your left elbow."
+        },
+        "right_elbow": {
+            "angle_min": 140.5,
+            "angle_max": 190.5,
+            "tip": "Adjust your right elbow."
+        },
+        "left_shoulder": {
+            "angle_min": 77.4,
+            "angle_max": 127.4,
+            "tip": "Adjust your left shoulder."
+        },
+        "right_shoulder": {
+            "angle_min": 88.2,
+            "angle_max": 138.2,
+            "tip": "Adjust your right shoulder."
+        },
+        "left_hip": {
+            "angle_min": 77.8,
+            "angle_max": 127.8,
+            "tip": "Adjust your left hip."
+        },
+        "right_hip": {
+            "angle_min": 68.2,
+            "angle_max": 118.2,
+            "tip": "Adjust your right hip."
+        },
+        "spine": {
+            "angle_min": 58.6,
+            "angle_max": 108.6,
+            "tip": "Adjust your spine."
+        },
+        "neck": {
+            "angle_min": 74.2,
+            "angle_max": 124.2,
+            "tip": "Adjust your neck."
+        }
+    },
+    "bridge-pose": {
+        "left_knee": {
+            "angle_min": 25.8,
+            "angle_max": 75.8,
+            "tip": "Adjust your left knee."
+        },
+        "right_knee": {
+            "angle_min": 35.3,
+            "angle_max": 85.3,
+            "tip": "Adjust your right knee."
+        },
+        "left_elbow": {
+            "angle_min": 133.7,
+            "angle_max": 183.7,
+            "tip": "Adjust your left elbow."
+        },
+        "right_elbow": {
+            "angle_min": 119.9,
+            "angle_max": 169.9,
+            "tip": "Adjust your right elbow."
+        },
+        "left_shoulder": {
+            "angle_min": 37.9,
+            "angle_max": 87.9,
+            "tip": "Adjust your left shoulder."
+        },
+        "right_shoulder": {
+            "angle_min": 44.1,
+            "angle_max": 94.1,
+            "tip": "Adjust your right shoulder."
+        },
+        "left_hip": {
+            "angle_min": 81.0,
+            "angle_max": 131.0,
+            "tip": "Adjust your left hip."
+        },
+        "right_hip": {
+            "angle_min": 60.7,
+            "angle_max": 110.7,
+            "tip": "Adjust your right hip."
+        },
+        "spine": {
+            "angle_min": 46.5,
+            "angle_max": 96.5,
+            "tip": "Adjust your spine."
+        },
+        "neck": {
+            "angle_min": 92.2,
+            "angle_max": 142.2,
+            "tip": "Adjust your neck."
+        }
+    },
+    "camel-pose": {
+        "left_knee": {
+            "angle_min": 67.5,
+            "angle_max": 117.5,
+            "tip": "Adjust your left knee."
+        },
+        "right_knee": {
+            "angle_min": 59.9,
+            "angle_max": 109.9,
+            "tip": "Adjust your right knee."
+        },
+        "left_elbow": {
+            "angle_min": 138.4,
+            "angle_max": 188.4,
+            "tip": "Adjust your left elbow."
+        },
+        "right_elbow": {
+            "angle_min": 145.2,
+            "angle_max": 195.2,
+            "tip": "Adjust your right elbow."
+        },
+        "left_shoulder": {
+            "angle_min": 19.1,
+            "angle_max": 69.1,
+            "tip": "Adjust your left shoulder."
+        },
+        "right_shoulder": {
+            "angle_min": 26.6,
+            "angle_max": 76.6,
+            "tip": "Adjust your right shoulder."
+        },
+        "left_hip": {
+            "angle_min": 63.4,
+            "angle_max": 113.4,
+            "tip": "Adjust your left hip."
+        },
+        "right_hip": {
+            "angle_min": 66.5,
+            "angle_max": 116.5,
+            "tip": "Adjust your right hip."
+        },
+        "spine": {
+            "angle_min": 56.8,
+            "angle_max": 106.8,
+            "tip": "Adjust your spine."
+        },
+        "neck": {
+            "angle_min": 63.5,
+            "angle_max": 113.5,
+            "tip": "Adjust your neck."
+        }
+    },
+    "chair-pose": {
+        "left_knee": {
+            "angle_min": 78.0,
+            "angle_max": 128.0,
+            "tip": "Adjust your left knee."
+        },
+        "right_knee": {
+            "angle_min": 75.0,
+            "angle_max": 125.0,
+            "tip": "Adjust your right knee."
+        },
+        "left_elbow": {
+            "angle_min": 99.5,
+            "angle_max": 149.5,
+            "tip": "Adjust your left elbow."
+        },
+        "right_elbow": {
+            "angle_min": 74.1,
+            "angle_max": 124.1,
+            "tip": "Adjust your right elbow."
+        },
+        "left_shoulder": {
+            "angle_min": 119.2,
+            "angle_max": 169.2,
+            "tip": "Adjust your left shoulder."
+        },
+        "right_shoulder": {
+            "angle_min": 128.2,
+            "angle_max": 178.2,
+            "tip": "Adjust your right shoulder."
+        },
+        "left_hip": {
+            "angle_min": 66.1,
+            "angle_max": 116.1,
+            "tip": "Adjust your left hip."
+        },
+        "right_hip": {
+            "angle_min": 52.2,
+            "angle_max": 102.2,
+            "tip": "Adjust your right hip."
+        },
+        "spine": {
+            "angle_min": 35.9,
+            "angle_max": 85.9,
+            "tip": "Adjust your spine."
+        },
+        "neck": {
+            "angle_min": 107.4,
+            "angle_max": 157.4,
+            "tip": "Adjust your neck."
+        }
+    },
+    "child-pose": {
+        "left_knee": {
+            "angle_min": 18.3,
+            "angle_max": 68.3,
+            "tip": "Adjust your left knee."
+        },
+        "right_knee": {
+            "angle_min": 49.7,
+            "angle_max": 99.7,
+            "tip": "Adjust your right knee."
+        },
+        "left_elbow": {
+            "angle_min": 85.3,
+            "angle_max": 135.3,
+            "tip": "Adjust your left elbow."
+        },
+        "right_elbow": {
+            "angle_min": 63.1,
+            "angle_max": 113.1,
+            "tip": "Adjust your right elbow."
+        },
+        "left_shoulder": {
+            "angle_min": 113.8,
+            "angle_max": 163.8,
+            "tip": "Adjust your left shoulder."
+        },
+        "right_shoulder": {
+            "angle_min": 106.0,
+            "angle_max": 156.0,
+            "tip": "Adjust your right shoulder."
+        },
+        "left_hip": {
+            "angle_min": 80.1,
+            "angle_max": 130.1,
+            "tip": "Adjust your left hip."
+        },
+        "right_hip": {
+            "angle_min": 93.1,
+            "angle_max": 143.1,
+            "tip": "Adjust your right hip."
+        },
+        "spine": {
+            "angle_min": 34.4,
+            "angle_max": 84.4,
+            "tip": "Adjust your spine."
+        },
+        "neck": {
+            "angle_min": 90.5,
+            "angle_max": 140.5,
+            "tip": "Adjust your neck."
+        }
+    },
+    "cobra-pose": {
+        "left_knee": {
+            "angle_min": 131.4,
+            "angle_max": 181.4,
+            "tip": "Adjust your left knee."
+        },
+        "right_knee": {
+            "angle_min": 135.9,
+            "angle_max": 185.9,
+            "tip": "Adjust your right knee."
+        },
+        "left_elbow": {
+            "angle_min": 133.1,
+            "angle_max": 183.1,
+            "tip": "Adjust your left elbow."
+        },
+        "right_elbow": {
+            "angle_min": 137.7,
+            "angle_max": 187.7,
+            "tip": "Adjust your right elbow."
+        },
+        "left_shoulder": {
+            "angle_min": -5.5,
+            "angle_max": 44.5,
+            "tip": "Adjust your left shoulder."
+        },
+        "right_shoulder": {
+            "angle_min": 14.3,
+            "angle_max": 64.3,
+            "tip": "Adjust your right shoulder."
+        },
+        "left_hip": {
+            "angle_min": 75.5,
+            "angle_max": 125.5,
+            "tip": "Adjust your left hip."
+        },
+        "right_hip": {
+            "angle_min": 64.1,
+            "angle_max": 114.1,
+            "tip": "Adjust your right hip."
+        },
+        "spine": {
+            "angle_min": 55.4,
+            "angle_max": 105.4,
+            "tip": "Adjust your spine."
+        },
+        "neck": {
+            "angle_min": 68.2,
+            "angle_max": 118.2,
+            "tip": "Adjust your neck."
+        }
+    },
+    "downdog-pose": {
+        "left_knee": {
+            "angle_min": 149.2,
+            "angle_max": 199.2,
+            "tip": "Adjust your left knee."
+        },
+        "right_knee": {
+            "angle_min": 143.8,
+            "angle_max": 193.8,
+            "tip": "Adjust your right knee."
+        },
+        "left_elbow": {
+            "angle_min": 99.1,
+            "angle_max": 149.1,
+            "tip": "Adjust your left elbow."
+        },
+        "right_elbow": {
+            "angle_min": 68.9,
+            "angle_max": 118.9,
+            "tip": "Adjust your right elbow."
+        },
+        "left_shoulder": {
+            "angle_min": 117.0,
+            "angle_max": 167.0,
+            "tip": "Adjust your left shoulder."
+        },
+        "right_shoulder": {
+            "angle_min": 123.6,
+            "angle_max": 173.6,
+            "tip": "Adjust your right shoulder."
+        },
+        "left_hip": {
+            "angle_min": 55.9,
+            "angle_max": 105.9,
+            "tip": "Adjust your left hip."
+        },
+        "right_hip": {
+            "angle_min": 70.3,
+            "angle_max": 120.3,
+            "tip": "Adjust your right hip."
+        },
+        "spine": {
+            "angle_min": 44.6,
+            "angle_max": 94.6,
+            "tip": "Adjust your spine."
+        },
+        "neck": {
+            "angle_min": 84.8,
+            "angle_max": 134.8,
+            "tip": "Adjust your neck."
+        }
+    },
+    "extendedsideangle-pose": {
+        "left_knee": {
+            "angle_min": 112.4,
+            "angle_max": 162.4,
+            "tip": "Adjust your left knee."
+        },
+        "right_knee": {
+            "angle_min": 104.1,
+            "angle_max": 154.1,
+            "tip": "Adjust your right knee."
+        },
+        "left_elbow": {
+            "angle_min": 141.5,
+            "angle_max": 191.5,
+            "tip": "Adjust your left elbow."
+        },
+        "right_elbow": {
+            "angle_min": 124.7,
+            "angle_max": 174.7,
+            "tip": "Adjust your right elbow."
+        },
+        "left_shoulder": {
+            "angle_min": 113.6,
+            "angle_max": 163.6,
+            "tip": "Adjust your left shoulder."
+        },
+        "right_shoulder": {
+            "angle_min": 47.4,
+            "angle_max": 97.4,
+            "tip": "Adjust your right shoulder."
+        },
+        "left_hip": {
+            "angle_min": 78.9,
+            "angle_max": 128.9,
+            "tip": "Adjust your left hip."
+        },
+        "right_hip": {
+            "angle_min": 95.0,
+            "angle_max": 145.0,
+            "tip": "Adjust your right hip."
+        },
+        "spine": {
+            "angle_min": 35.6,
+            "angle_max": 85.6,
+            "tip": "Adjust your spine."
+        },
+        "neck": {
+            "angle_min": 23.0,
+            "angle_max": 73.0,
+            "tip": "Adjust your neck."
+        }
+    },
+    "goddess-pose": {
+        "left_knee": {
+            "angle_min": 16.2,
+            "angle_max": 66.2,
+            "tip": "Adjust your left knee."
+        },
+        "right_knee": {
+            "angle_min": 19.7,
+            "angle_max": 69.7,
+            "tip": "Adjust your right knee."
+        },
+        "left_elbow": {
+            "angle_min": 114.9,
+            "angle_max": 164.9,
+            "tip": "Adjust your left elbow."
+        },
+        "right_elbow": {
+            "angle_min": 108.9,
+            "angle_max": 158.9,
+            "tip": "Adjust your right elbow."
+        },
+        "left_shoulder": {
+            "angle_min": 72.1,
+            "angle_max": 122.1,
+            "tip": "Adjust your left shoulder."
+        },
+        "right_shoulder": {
+            "angle_min": 69.0,
+            "angle_max": 119.0,
+            "tip": "Adjust your right shoulder."
+        },
+        "left_hip": {
+            "angle_min": 88.3,
+            "angle_max": 138.3,
+            "tip": "Adjust your left hip."
+        },
+        "right_hip": {
+            "angle_min": 76.2,
+            "angle_max": 126.2,
+            "tip": "Adjust your right hip."
+        },
+        "spine": {
+            "angle_min": 48.9,
+            "angle_max": 98.9,
+            "tip": "Adjust your spine."
+        },
+        "neck": {
+            "angle_min": -0.7,
+            "angle_max": 49.3,
+            "tip": "Adjust your neck."
+        }
+    },
+    "locust-pose": {
+        "left_knee": {
+            "angle_min": 126.8,
+            "angle_max": 176.8,
+            "tip": "Adjust your left knee."
+        },
+        "right_knee": {
+            "angle_min": 122.9,
+            "angle_max": 172.9,
+            "tip": "Adjust your right knee."
+        },
+        "left_elbow": {
+            "angle_min": 139.6,
+            "angle_max": 189.6,
+            "tip": "Adjust your left elbow."
+        },
+        "right_elbow": {
+            "angle_min": 116.1,
+            "angle_max": 166.1,
+            "tip": "Adjust your right elbow."
+        },
+        "left_shoulder": {
+            "angle_min": 19.0,
+            "angle_max": 69.0,
+            "tip": "Adjust your left shoulder."
+        },
+        "right_shoulder": {
+            "angle_min": 1.6,
+            "angle_max": 51.6,
+            "tip": "Adjust your right shoulder."
+        },
+        "left_hip": {
+            "angle_min": 61.7,
+            "angle_max": 111.7,
+            "tip": "Adjust your left hip."
+        },
+        "right_hip": {
+            "angle_min": 72.2,
+            "angle_max": 122.2,
+            "tip": "Adjust your right hip."
+        },
+        "spine": {
+            "angle_min": 38.7,
+            "angle_max": 88.7,
+            "tip": "Adjust your spine."
+        },
+        "neck": {
+            "angle_min": 93.4,
+            "angle_max": 143.4,
+            "tip": "Adjust your neck."
+        }
+    },
+    "mountain-pose": {
+        "left_knee": {
+            "angle_min": 109.3,
+            "angle_max": 159.3,
+            "tip": "Adjust your left knee."
+        },
+        "right_knee": {
+            "angle_min": 109.6,
+            "angle_max": 159.6,
+            "tip": "Adjust your right knee."
+        },
+        "left_elbow": {
+            "angle_min": 87.9,
+            "angle_max": 137.9,
+            "tip": "Adjust your left elbow."
+        },
+        "right_elbow": {
+            "angle_min": 92.4,
+            "angle_max": 142.4,
+            "tip": "Adjust your right elbow."
+        },
+        "left_shoulder": {
+            "angle_min": -13.6,
+            "angle_max": 36.4,
+            "tip": "Adjust your left shoulder."
+        },
+        "right_shoulder": {
+            "angle_min": -11.5,
+            "angle_max": 38.5,
+            "tip": "Adjust your right shoulder."
+        },
+        "left_hip": {
+            "angle_min": 62.6,
+            "angle_max": 112.6,
+            "tip": "Adjust your left hip."
+        },
+        "right_hip": {
+            "angle_min": 62.8,
+            "angle_max": 112.8,
+            "tip": "Adjust your right hip."
+        },
+        "spine": {
+            "angle_min": 49.8,
+            "angle_max": 99.8,
+            "tip": "Adjust your spine."
+        },
+        "neck": {
+            "angle_min": -3.3,
+            "angle_max": 46.7,
+            "tip": "Adjust your neck."
+        }
+    },
+    "puppy-pose": {
+        "left_knee": {
+            "angle_min": 61.9,
+            "angle_max": 111.9,
+            "tip": "Adjust your left knee."
+        },
+        "right_knee": {
+            "angle_min": 53.6,
+            "angle_max": 103.6,
+            "tip": "Adjust your right knee."
+        },
+        "left_elbow": {
+            "angle_min": 76.6,
+            "angle_max": 126.6,
+            "tip": "Adjust your left elbow."
+        },
+        "right_elbow": {
+            "angle_min": 96.8,
+            "angle_max": 146.8,
+            "tip": "Adjust your right elbow."
+        },
+        "left_shoulder": {
+            "angle_min": 125.5,
+            "angle_max": 175.5,
+            "tip": "Adjust your left shoulder."
+        },
+        "right_shoulder": {
+            "angle_min": 113.5,
+            "angle_max": 163.5,
+            "tip": "Adjust your right shoulder."
+        },
+        "left_hip": {
+            "angle_min": 73.4,
+            "angle_max": 123.4,
+            "tip": "Adjust your left hip."
+        },
+        "right_hip": {
+            "angle_min": 70.4,
+            "angle_max": 120.4,
+            "tip": "Adjust your right hip."
+        },
+        "spine": {
+            "angle_min": 49.1,
+            "angle_max": 99.1,
+            "tip": "Adjust your spine."
+        },
+        "neck": {
+            "angle_min": 98.8,
+            "angle_max": 148.8,
+            "tip": "Adjust your neck."
+        }
+    },
+    "reversewarrior-pose": {
+        "left_knee": {
+            "angle_min": 55.1,
+            "angle_max": 105.1,
+            "tip": "Adjust your left knee."
+        },
+        "right_knee": {
+            "angle_min": 117.2,
+            "angle_max": 167.2,
+            "tip": "Adjust your right knee."
+        },
+        "left_elbow": {
+            "angle_min": 125.7,
+            "angle_max": 175.7,
+            "tip": "Adjust your left elbow."
+        },
+        "right_elbow": {
+            "angle_min": 131.4,
+            "angle_max": 181.4,
+            "tip": "Adjust your right elbow."
+        },
+        "left_shoulder": {
+            "angle_min": 128.5,
+            "angle_max": 178.5,
+            "tip": "Adjust your left shoulder."
+        },
+        "right_shoulder": {
+            "angle_min": 12.0,
+            "angle_max": 62.0,
+            "tip": "Adjust your right shoulder."
+        },
+        "left_hip": {
+            "angle_min": 71.0,
+            "angle_max": 121.0,
+            "tip": "Adjust your left hip."
+        },
+        "right_hip": {
+            "angle_min": 99.4,
+            "angle_max": 149.4,
+            "tip": "Adjust your right hip."
+        },
+        "spine": {
+            "angle_min": 62.5,
+            "angle_max": 112.5,
+            "tip": "Adjust your spine."
+        },
+        "neck": {
+            "angle_min": 47.2,
+            "angle_max": 97.2,
+            "tip": "Adjust your neck."
+        }
+    },
+    "seated-pose": {
+        "left_knee": {
+            "angle_min": 4.4,
+            "angle_max": 54.4,
+            "tip": "Adjust your left knee."
+        },
+        "right_knee": {
+            "angle_min": 14.6,
+            "angle_max": 64.6,
+            "tip": "Adjust your right knee."
+        },
+        "left_elbow": {
+            "angle_min": 112.7,
+            "angle_max": 162.7,
+            "tip": "Adjust your left elbow."
+        },
+        "right_elbow": {
+            "angle_min": 107.6,
+            "angle_max": 157.6,
+            "tip": "Adjust your right elbow."
+        },
+        "left_shoulder": {
+            "angle_min": 6.9,
+            "angle_max": 56.9,
+            "tip": "Adjust your left shoulder."
+        },
+        "right_shoulder": {
+            "angle_min": 4.6,
+            "angle_max": 54.6,
+            "tip": "Adjust your right shoulder."
+        },
+        "left_hip": {
+            "angle_min": 77.7,
+            "angle_max": 127.7,
+            "tip": "Adjust your left hip."
+        },
+        "right_hip": {
+            "angle_min": 84.5,
+            "angle_max": 134.5,
+            "tip": "Adjust your right hip."
+        },
+        "spine": {
+            "angle_min": 58.9,
+            "angle_max": 108.9,
+            "tip": "Adjust your spine."
+        },
+        "neck": {
+            "angle_min": 12.0,
+            "angle_max": 62.0,
+            "tip": "Adjust your neck."
+        }
+    },
+    "sphinx-pose": {
+        "left_knee": {
+            "angle_min": 134.4,
+            "angle_max": 184.4,
+            "tip": "Adjust your left knee."
+        },
+        "right_knee": {
+            "angle_min": 139.0,
+            "angle_max": 189.0,
+            "tip": "Adjust your right knee."
+        },
+        "left_elbow": {
+            "angle_min": 87.1,
+            "angle_max": 137.1,
+            "tip": "Adjust your left elbow."
+        },
+        "right_elbow": {
+            "angle_min": 88.9,
+            "angle_max": 138.9,
+            "tip": "Adjust your right elbow."
+        },
+        "left_shoulder": {
+            "angle_min": 9.5,
+            "angle_max": 59.5,
+            "tip": "Adjust your left shoulder."
+        },
+        "right_shoulder": {
+            "angle_min": 26.5,
+            "angle_max": 76.5,
+            "tip": "Adjust your right shoulder."
+        },
+        "left_hip": {
+            "angle_min": 75.8,
+            "angle_max": 125.8,
+            "tip": "Adjust your left hip."
+        },
+        "right_hip": {
+            "angle_min": 68.7,
+            "angle_max": 118.7,
+            "tip": "Adjust your right hip."
+        },
+        "spine": {
+            "angle_min": 52.7,
+            "angle_max": 102.7,
+            "tip": "Adjust your spine."
+        },
+        "neck": {
+            "angle_min": 85.2,
+            "angle_max": 135.2,
+            "tip": "Adjust your neck."
+        }
+    },
+    "tree-pose": {
+        "left_knee": {
+            "angle_min": 97.2,
+            "angle_max": 147.2,
+            "tip": "Adjust your left knee."
+        },
+        "right_knee": {
+            "angle_min": -8.2,
+            "angle_max": 41.8,
+            "tip": "Adjust your right knee."
+        },
+        "left_elbow": {
+            "angle_min": 105.1,
+            "angle_max": 155.1,
+            "tip": "Adjust your left elbow."
+        },
+        "right_elbow": {
+            "angle_min": 99.3,
+            "angle_max": 149.3,
+            "tip": "Adjust your right elbow."
+        },
+        "left_shoulder": {
+            "angle_min": 40.3,
+            "angle_max": 90.3,
+            "tip": "Adjust your left shoulder."
+        },
+        "right_shoulder": {
+            "angle_min": 52.1,
+            "angle_max": 102.1,
+            "tip": "Adjust your right shoulder."
+        },
+        "left_hip": {
+            "angle_min": 62.6,
+            "angle_max": 112.6,
+            "tip": "Adjust your left hip."
+        },
+        "right_hip": {
+            "angle_min": 47.0,
+            "angle_max": 97.0,
+            "tip": "Adjust your right hip."
+        },
+        "spine": {
+            "angle_min": 22.7,
+            "angle_max": 72.7,
+            "tip": "Adjust your spine."
+        },
+        "neck": {
+            "angle_min": 3.0,
+            "angle_max": 53.0,
+            "tip": "Adjust your neck."
+        }
+    },
+    "triangle-pose": {
+        "left_knee": {
+            "angle_min": 94.9,
+            "angle_max": 144.9,
+            "tip": "Adjust your left knee."
+        },
+        "right_knee": {
+            "angle_min": 118.8,
+            "angle_max": 168.8,
+            "tip": "Adjust your right knee."
+        },
+        "left_elbow": {
+            "angle_min": 138.1,
+            "angle_max": 188.1,
+            "tip": "Adjust your left elbow."
+        },
+        "right_elbow": {
+            "angle_min": 126.2,
+            "angle_max": 176.2,
+            "tip": "Adjust your right elbow."
+        },
+        "left_shoulder": {
+            "angle_min": 99.3,
+            "angle_max": 149.3,
+            "tip": "Adjust your left shoulder."
+        },
+        "right_shoulder": {
+            "angle_min": 82.6,
+            "angle_max": 132.6,
+            "tip": "Adjust your right shoulder."
+        },
+        "left_hip": {
+            "angle_min": 71.1,
+            "angle_max": 121.1,
+            "tip": "Adjust your left hip."
+        },
+        "right_hip": {
+            "angle_min": 100.6,
+            "angle_max": 150.6,
+            "tip": "Adjust your right hip."
+        },
+        "spine": {
+            "angle_min": 21.3,
+            "angle_max": 71.3,
+            "tip": "Adjust your spine."
+        },
+        "neck": {
+            "angle_min": 25.3,
+            "angle_max": 75.3,
+            "tip": "Adjust your neck."
+        }
+    },
+    "upwardsalute-pose": {
+        "left_knee": {
+            "angle_min": 114.8,
+            "angle_max": 164.8,
+            "tip": "Adjust your left knee."
+        },
+        "right_knee": {
+            "angle_min": 115.4,
+            "angle_max": 165.4,
+            "tip": "Adjust your right knee."
+        },
+        "left_elbow": {
+            "angle_min": 138.6,
+            "angle_max": 188.6,
+            "tip": "Adjust your left elbow."
+        },
+        "right_elbow": {
+            "angle_min": 126.0,
+            "angle_max": 176.0,
+            "tip": "Adjust your right elbow."
+        },
+        "left_shoulder": {
+            "angle_min": 127.1,
+            "angle_max": 177.1,
+            "tip": "Adjust your left shoulder."
+        },
+        "right_shoulder": {
+            "angle_min": 129.5,
+            "angle_max": 179.5,
+            "tip": "Adjust your right shoulder."
+        },
+        "left_hip": {
+            "angle_min": 55.1,
+            "angle_max": 105.1,
+            "tip": "Adjust your left hip."
+        },
+        "right_hip": {
+            "angle_min": 68.3,
+            "angle_max": 118.3,
+            "tip": "Adjust your right hip."
+        },
+        "spine": {
+            "angle_min": 47.4,
+            "angle_max": 97.4,
+            "tip": "Adjust your spine."
+        },
+        "neck": {
+            "angle_min": 8.6,
+            "angle_max": 58.6,
+            "tip": "Adjust your neck."
+        }
+    },
+    "warrior1-pose": {
+        "left_knee": {
+            "angle_min": 71.8,
+            "angle_max": 121.8,
+            "tip": "Adjust your left knee."
+        },
+        "right_knee": {
+            "angle_min": 116.0,
+            "angle_max": 166.0,
+            "tip": "Adjust your right knee."
+        },
+        "left_elbow": {
+            "angle_min": 79.0,
+            "angle_max": 129.0,
+            "tip": "Adjust your left elbow."
+        },
+        "right_elbow": {
+            "angle_min": 120.9,
+            "angle_max": 170.9,
+            "tip": "Adjust your right elbow."
+        },
+        "left_shoulder": {
+            "angle_min": 129.7,
+            "angle_max": 179.7,
+            "tip": "Adjust your left shoulder."
+        },
+        "right_shoulder": {
+            "angle_min": 130.2,
+            "angle_max": 180.2,
+            "tip": "Adjust your right shoulder."
+        },
+        "left_hip": {
+            "angle_min": 74.1,
+            "angle_max": 124.1,
+            "tip": "Adjust your left hip."
+        },
+        "right_hip": {
+            "angle_min": 89.1,
+            "angle_max": 139.1,
+            "tip": "Adjust your right hip."
+        },
+        "spine": {
+            "angle_min": 48.5,
+            "angle_max": 98.5,
+            "tip": "Adjust your spine."
+        },
+        "neck": {
+            "angle_min": 105.5,
+            "angle_max": 155.5,
+            "tip": "Adjust your neck."
+        }
+    },
+    "warrior2-pose": {
+        "left_knee": {
+            "angle_min": 88.0,
+            "angle_max": 138.0,
+            "tip": "Adjust your left knee."
+        },
+        "right_knee": {
+            "angle_min": 52.1,
+            "angle_max": 102.1,
+            "tip": "Adjust your right knee."
+        },
+        "left_elbow": {
+            "angle_min": 123.1,
+            "angle_max": 173.1,
+            "tip": "Adjust your left elbow."
+        },
+        "right_elbow": {
+            "angle_min": 87.1,
+            "angle_max": 137.1,
+            "tip": "Adjust your right elbow."
+        },
+        "left_shoulder": {
+            "angle_min": 78.9,
+            "angle_max": 128.9,
+            "tip": "Adjust your left shoulder."
+        },
+        "right_shoulder": {
+            "angle_min": 74.9,
+            "angle_max": 124.9,
+            "tip": "Adjust your right shoulder."
+        },
+        "left_hip": {
+            "angle_min": 106.8,
+            "angle_max": 156.8,
+            "tip": "Adjust your left hip."
+        },
+        "right_hip": {
+            "angle_min": 45.3,
+            "angle_max": 95.3,
+            "tip": "Adjust your right hip."
+        },
+        "spine": {
+            "angle_min": 35.2,
+            "angle_max": 85.2,
+            "tip": "Adjust your spine."
+        },
+        "neck": {
+            "angle_min": 34.2,
+            "angle_max": 84.2,
+            "tip": "Adjust your neck."
+        }
+    }
+}
