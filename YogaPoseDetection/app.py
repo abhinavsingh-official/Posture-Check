@@ -8,7 +8,12 @@ Streamlit button only reads as True for the one script run right after
 it's clicked, so it can start a loop but can never interrupt one
 already running. Unchecking a checkbox is a new widget interaction,
 which Streamlit can act on even while a previous run's loop is still
-executing - the standard, documented pattern for a live camera feed."""
+executing - the standard, documented pattern for a live camera feed.
+
+Every status message analysis.py's OpenCV window shows ("Stand
+properly in frame", "Move back", "Please start your yoga") is mirrored
+here as a real on-screen banner - the raw camera feed is never shown
+with no explanation for why nothing else is happening."""
 
 import time
 
@@ -31,8 +36,10 @@ mp_pose = mp.solutions.pose
 
 HOLD_TIME_REQUIRED = 5
 AUTO_DETECT_DELAY = 5
+START_MESSAGE_DURATION = 3
 SMOOTHING_FRAMES = 7
 CAMERA_WARMUP_ATTEMPTS = 15
+PROCESS_WIDTH = 640  # frames are downscaled to this width before MediaPipe runs on them
 
 STYLE = """
 <style>
@@ -47,9 +54,19 @@ div[data-testid="stMetricValue"] { font-size: 1.6rem; }
     background: #161b22; border: 1px solid #30363d; border-radius: 10px;
     padding: 1rem 1.2rem; margin-bottom: 0.8rem;
 }
+.pc-banner {
+    background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+    padding: 3rem 1.5rem; text-align: center; color: #c9d1d9; font-size: 1.05rem;
+}
 .pc-status-good { color: #3fb950; font-weight: 600; }
 .pc-status-bad { color: #f85149; font-weight: 600; }
-.pc-camera-frame { border-radius: 12px; overflow: hidden; border: 1px solid #30363d; }
+.pc-feature-card {
+    background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+    padding: 1.3rem 1.4rem; height: 100%;
+}
+.pc-feature-card h4 { margin-top: 0; }
+.pc-stat { font-size: 2rem; font-weight: 700; color: #ff4b4b; }
+.pc-stat-label { color: #8b949e; font-size: 0.9rem; }
 </style>
 """
 
@@ -67,9 +84,96 @@ def _open_camera() -> cv2.VideoCapture | None:
     return None
 
 
+def _downscale(frame):
+    h, w = frame.shape[:2]
+    if w <= PROCESS_WIDTH:
+        return frame
+    scale = PROCESS_WIDTH / w
+    return cv2.resize(frame, (PROCESS_WIDTH, int(h * scale)))
+
+
+def _camera_error():
+    st.error(
+        "Could not read from the camera. It opened but never returned a frame after "
+        f"{CAMERA_WARMUP_ATTEMPTS} attempts - check that no other app is using it, and that "
+        "this terminal app has camera permission (System Settings > Privacy & Security > Camera)."
+    )
+
+
 def _progress_bar(label: str, value: float, maximum: float) -> None:
     st.markdown(f"**{label}**")
     st.progress(min(value / maximum, 1.0))
+
+
+def _empty_state(frame_slot, text: str) -> None:
+    frame_slot.markdown(f'<div class="pc-banner">{text}</div>', unsafe_allow_html=True)
+
+
+def home_tab():
+    st.markdown(
+        '<div class="pc-card" style="padding:2rem 2rem;">'
+        "<h2 style='margin-top:0;'>Real-time pose correction and rep counting</h2>"
+        "<p style='color:#8b949e; font-size:1.05rem; max-width:720px;'>"
+        "MediaPipe extracts your body landmarks every frame. For yoga, each joint angle is "
+        "checked against real reference ranges mined from sample poses. For workouts, a "
+        "rep-counting state machine tracks one joint angle through its full range of motion, "
+        "with a second, independent check for common form mistakes on top."
+        "</p></div>",
+        unsafe_allow_html=True,
+    )
+
+    sessions = storage.recent_sessions()
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.markdown(
+            f'<div class="pc-feature-card"><div class="pc-stat">{len(load_angle_data())}</div>'
+            '<div class="pc-stat-label">Yoga poses</div></div>',
+            unsafe_allow_html=True,
+        )
+    with col2:
+        st.markdown(
+            f'<div class="pc-feature-card"><div class="pc-stat">{len(EXERCISES)}</div>'
+            '<div class="pc-stat-label">Workout exercises</div></div>',
+            unsafe_allow_html=True,
+        )
+    with col3:
+        st.markdown(
+            f'<div class="pc-feature-card"><div class="pc-stat">{len(sessions)}</div>'
+            '<div class="pc-stat-label">Sessions logged</div></div>',
+            unsafe_allow_html=True,
+        )
+
+    st.markdown("### What's in here")
+    c1, c2, c3 = st.columns(3)
+    with c1:
+        st.markdown(
+            '<div class="pc-feature-card"><h4>🧘 Yoga</h4>'
+            "<p>Auto-detect or pick a pose manually. A skeleton overlay colors each joint "
+            "green or red depending on whether it's in range, plus plain-language hints "
+            "("
+            "e.g. \"Left Knee: increase by 12°\").</p></div>",
+            unsafe_allow_html=True,
+        )
+    with c2:
+        st.markdown(
+            '<div class="pc-feature-card"><h4>💪 Workout</h4>'
+            "<p>Rep counting for squats, push-ups, bicep curls, lunges, shoulder presses, "
+            "and lateral raises - each with its own form-quality check, not just a count.</p></div>",
+            unsafe_allow_html=True,
+        )
+    with c3:
+        st.markdown(
+            '<div class="pc-feature-card"><h4>📊 History</h4>'
+            "<p>Every session is logged locally (SQLite) - a reps-over-time trend per "
+            "exercise, and a CSV export.</p></div>",
+            unsafe_allow_html=True,
+        )
+
+    st.markdown(
+        '<p style="color:#8b949e; margin-top:1.5rem;">Head to the <b>Yoga</b> or '
+        "<b>Workout</b> tab above to start a session.</p>",
+        unsafe_allow_html=True,
+    )
 
 
 def yoga_tab():
@@ -92,22 +196,14 @@ def yoga_tab():
     with col1:
         frame_slot = st.empty()
         if not running:
-            frame_slot.markdown(
-                '<div class="pc-card" style="text-align:center; padding:4rem 1rem; color:#8b949e;">'
-                "Check “▶ Start camera” to begin</div>",
-                unsafe_allow_html=True,
-            )
+            _empty_state(frame_slot, "Check “▶ Start camera” to begin")
 
     if not running:
         return
 
     cap = _open_camera()
     if cap is None:
-        st.error(
-            "Could not read from the camera. It opened but never returned a frame after "
-            f"{CAMERA_WARMUP_ATTEMPTS} attempts - check that no other app is using it, and that "
-            "this terminal app has camera permission (System Settings > Privacy & Security > Camera)."
-        )
+        _camera_error()
         return
 
     voice = VoiceFeedback(enabled=voice_on)
@@ -115,6 +211,7 @@ def yoga_tab():
     detection_start_time = None
     hold_start = None
     session_start = time.time()
+    loop_start = time.time()
 
     try:
         with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as pose_model:
@@ -124,16 +221,24 @@ def yoga_tab():
                     st.warning("Lost the camera feed mid-session.")
                     break
                 frame = cv2.flip(frame, 1)
-                results = pose_model.process(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
+                process_frame = _downscale(frame)
+                results = pose_model.process(cv2.cvtColor(process_frame, cv2.COLOR_BGR2RGB))
 
                 if not results.pose_landmarks:
-                    frame_slot.image(frame, channels="BGR")
+                    if time.time() - loop_start <= START_MESSAGE_DURATION:
+                        _empty_state(frame_slot, "Please start your yoga")
+                    else:
+                        _empty_state(frame_slot, "Stand properly in frame")
                     continue
 
                 landmarks = results.pose_landmarks
                 lm = landmarks.landmark
                 if not geometry.full_body_visible(lm):
-                    frame_slot.image(frame, channels="BGR")
+                    _empty_state(frame_slot, "Move back – full body not visible")
+                    continue
+
+                if time.time() - loop_start <= START_MESSAGE_DURATION:
+                    _empty_state(frame_slot, "Please start your yoga")
                     continue
 
                 user_angles = geometry.get_all_angles(lm)
@@ -148,8 +253,7 @@ def yoga_tab():
                         detection_start_time = time.time()
                     elapsed = time.time() - detection_start_time
                     if elapsed < AUTO_DETECT_DELAY:
-                        pose_metric.metric("Pose", f"Detecting... {int(AUTO_DETECT_DELAY - elapsed)}s")
-                        frame_slot.image(frame, channels="BGR")
+                        _empty_state(frame_slot, f"Hold still... detecting pose in {int(AUTO_DETECT_DELAY - elapsed)}s")
                         continue
                     active_pose, _ = feedback.auto_detect_pose(smoothed, angle_data)
 
@@ -162,8 +266,8 @@ def yoga_tab():
                     voice.say(hints[0])
 
                 bad_joints = renderer.bad_joints_from_hints(hints)
-                renderer.draw_skeleton(frame, landmarks, bad_joints)
-                frame_slot.image(frame, channels="BGR")
+                renderer.draw_skeleton(process_frame, landmarks, bad_joints)
+                frame_slot.image(process_frame, channels="BGR")
                 pose_metric.metric("Pose", active_pose or "None")
                 with hold_slot.container():
                     _progress_bar("Hold time", hold_time, HOLD_TIME_REQUIRED)
@@ -193,7 +297,7 @@ def workout_tab():
     col1, col2 = st.columns([3, 1], gap="large")
     with col2:
         st.markdown('<div class="pc-card">', unsafe_allow_html=True)
-        exercise = st.selectbox("Exercise", list(EXERCISES.keys()))
+        exercise = st.selectbox("Exercise", list(EXERCISES.keys()), format_func=lambda e: e.replace("_", " ").title())
         voice_on = st.checkbox("Voice feedback", key="workout_voice")
         st.markdown("</div>", unsafe_allow_html=True)
         running = st.checkbox("▶ Start camera", key="workout_running")
@@ -203,22 +307,14 @@ def workout_tab():
     with col1:
         frame_slot = st.empty()
         if not running:
-            frame_slot.markdown(
-                '<div class="pc-card" style="text-align:center; padding:4rem 1rem; color:#8b949e;">'
-                "Check “▶ Start camera” to begin</div>",
-                unsafe_allow_html=True,
-            )
+            _empty_state(frame_slot, "Check “▶ Start camera” to begin")
 
     if not running:
         return
 
     cap = _open_camera()
     if cap is None:
-        st.error(
-            "Could not read from the camera. It opened but never returned a frame after "
-            f"{CAMERA_WARMUP_ATTEMPTS} attempts - check that no other app is using it, and that "
-            "this terminal app has camera permission (System Settings > Privacy & Security > Camera)."
-        )
+        _camera_error()
         return
 
     voice = VoiceFeedback(enabled=voice_on)
@@ -233,26 +329,34 @@ def workout_tab():
                     st.warning("Lost the camera feed mid-session.")
                     break
                 frame = cv2.flip(frame, 1)
-                results = pose_model.process(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
+                process_frame = _downscale(frame)
+                results = pose_model.process(cv2.cvtColor(process_frame, cv2.COLOR_BGR2RGB))
 
-                if results.pose_landmarks:
-                    counter.update(results.pose_landmarks.landmark)
-                    form_warning = workout.check_form(exercise, results.pose_landmarks.landmark)
-                    if form_warning:
-                        counter.form_warnings += 1
-                        if voice_on:
-                            voice.say(form_warning)
-                    renderer.draw_skeleton(frame, results.pose_landmarks, set())
-                    if form_warning:
-                        warning_box.markdown(
-                            f'<div class="pc-card pc-status-bad">{form_warning}</div>', unsafe_allow_html=True
-                        )
-                    else:
-                        warning_box.markdown(
-                            '<div class="pc-card pc-status-good">Good form</div>', unsafe_allow_html=True
-                        )
+                if not results.pose_landmarks:
+                    _empty_state(frame_slot, "Stand properly in frame")
+                    continue
 
-                frame_slot.image(frame, channels="BGR")
+                if not geometry.full_body_visible(results.pose_landmarks.landmark):
+                    _empty_state(frame_slot, "Move back – full body not visible")
+                    continue
+
+                counter.update(results.pose_landmarks.landmark)
+                form_warning = workout.check_form(exercise, results.pose_landmarks.landmark)
+                if form_warning:
+                    counter.form_warnings += 1
+                    if voice_on:
+                        voice.say(form_warning)
+                renderer.draw_skeleton(process_frame, results.pose_landmarks, set())
+                if form_warning:
+                    warning_box.markdown(
+                        f'<div class="pc-card pc-status-bad">{form_warning}</div>', unsafe_allow_html=True
+                    )
+                else:
+                    warning_box.markdown(
+                        '<div class="pc-card pc-status-good">Good form</div>', unsafe_allow_html=True
+                    )
+
+                frame_slot.image(process_frame, channels="BGR")
                 rep_metric.metric("Reps", counter.count)
     except Exception as e:  # noqa: BLE001
         st.error(f"Session stopped on an error: {e}")
@@ -293,7 +397,9 @@ def main():
     st.markdown(STYLE, unsafe_allow_html=True)
     st.title("🧘 Posture-Check")
     st.caption("Real-time pose correction and rep counting, backed by real joint-angle analysis.")
-    tab1, tab2, tab3 = st.tabs(["Yoga", "Workout", "Session History"])
+    tab0, tab1, tab2, tab3 = st.tabs(["Home", "Yoga", "Workout", "Session History"])
+    with tab0:
+        home_tab()
     with tab1:
         yoga_tab()
     with tab2:

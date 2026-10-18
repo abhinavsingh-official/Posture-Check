@@ -62,3 +62,33 @@ def test_check_form_flags_knee_valgus():
 def test_check_form_no_warning_when_knee_tracks_ankle():
     landmarks = _landmarks(LEFT_KNEE=(0.50, 0.5, 0), LEFT_ANKLE=(0.50, 0.9, 0))
     assert check_form("squat", landmarks) is None
+
+
+def test_lateral_raise_counts_a_rep():
+    counter = RepCounter(exercise="lateral_raise")
+    # Arm down at the side: hip-shoulder-elbow nearly in line (~173 deg).
+    arm_down = _landmarks(LEFT_HIP=(0, 0, 0), LEFT_SHOULDER=(0, -1, 0), LEFT_ELBOW=(0.1, -1.8, 0))
+    counter.update(arm_down)
+    assert counter.state == "up"
+
+    # Arm raised to shoulder height: a right-angle bend at the shoulder (~90 deg).
+    arm_raised = _landmarks(LEFT_HIP=(0, 0, 0), LEFT_SHOULDER=(0, -1, 0), LEFT_ELBOW=(1, -1, 0))
+    counter.update(arm_raised)
+    assert counter.state == "down"
+
+    counter.update(arm_down)
+    assert counter.state == "up"
+    assert counter.count == 1
+
+
+def test_check_form_flags_raise_overshoot():
+    # Elbow above the shoulder (smaller y) - overshot the raise.
+    landmarks = _landmarks(LEFT_SHOULDER=(0, -1, 0), LEFT_ELBOW=(0, -2, 0))
+    warning = check_form("lateral_raise", landmarks)
+    assert warning is not None
+    assert "shoulder height" in warning.lower()
+
+
+def test_check_form_no_warning_at_shoulder_height():
+    landmarks = _landmarks(LEFT_SHOULDER=(0, -1, 0), LEFT_ELBOW=(1, -1, 0))
+    assert check_form("lateral_raise", landmarks) is None

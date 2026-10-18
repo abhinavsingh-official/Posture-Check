@@ -42,6 +42,33 @@ EXERCISES: dict[str, dict] = {
         "label": "Elbow angle",
         "form_check": "upper_arm_drift",
     },
+    "lunge": {
+        "joint": ("LEFT_HIP", "LEFT_KNEE", "LEFT_ANKLE"),
+        "down_below": 100,
+        "up_above": 165,
+        "label": "Front knee angle",
+        "form_check": "knee_valgus",
+    },
+    "shoulder_press": {
+        "joint": ("LEFT_SHOULDER", "LEFT_ELBOW", "LEFT_WRIST"),
+        "down_below": 95,
+        "up_above": 165,
+        "label": "Elbow angle",
+        "form_check": "elbow_flare",
+    },
+    "lateral_raise": {
+        # The hip-shoulder-elbow angle shrinks from ~175 deg at rest to
+        # ~90 deg at shoulder height - that's the range this tracks.
+        # It's not monotonic past shoulder height (it climbs back up
+        # again overhead), which is exactly the "overshoot" case the
+        # dedicated form check below catches separately, via a direct
+        # elbow-vs-shoulder height comparison instead of this angle.
+        "joint": ("LEFT_HIP", "LEFT_SHOULDER", "LEFT_ELBOW"),
+        "down_below": 110,
+        "up_above": 150,
+        "label": "Shoulder angle",
+        "form_check": "raise_overshoot",
+    },
 }
 
 # How far the knee can drift inward of the ankle (as a fraction of
@@ -79,6 +106,21 @@ def _check_torso_angle(landmarks, threshold: float, warning: str) -> str | None:
     return None
 
 
+def _check_raise_overshoot(landmarks) -> str | None:
+    # A direct height comparison, not an angle - the tracked
+    # hip-shoulder-elbow angle isn't monotonic past shoulder height
+    # (see the comment on EXERCISES["lateral_raise"]), so it can't tell
+    # "still raising" from "overshot and coming back down" on its own.
+    try:
+        shoulder = get_landmark_point(landmarks, "LEFT_SHOULDER")
+        elbow = get_landmark_point(landmarks, "LEFT_ELBOW")
+    except (KeyError, IndexError):
+        return None
+    if elbow[1] < shoulder[1]:  # smaller y = higher up the frame
+        return "Raising past shoulder height - lower it a bit"
+    return None
+
+
 def check_form(exercise: str, landmarks) -> str | None:
     form_check = EXERCISES[exercise]["form_check"]
     if form_check == "knee_valgus":
@@ -87,6 +129,8 @@ def check_form(exercise: str, landmarks) -> str | None:
         return _check_torso_angle(landmarks, ELBOW_FLARE_THRESHOLD, "Elbows flaring out - keep them closer to your body")
     if form_check == "upper_arm_drift":
         return _check_torso_angle(landmarks, UPPER_ARM_DRIFT_THRESHOLD, "Upper arm drifting forward - keep it still")
+    if form_check == "raise_overshoot":
+        return _check_raise_overshoot(landmarks)
     return None
 
 
