@@ -1,0 +1,11 @@
+# mediapipe pinned - releases after 0.10.x removed the legacy
+# mediapipe.solutions API this project uses (mp.solutions.pose), so a
+# newer version breaks with "module 'mediapipe' has no attribute 'solutions'".
+mediapipe==0.10.21
+protobuf>=4.25.3,<5
+opencv-python
+numpy
+streamlit
+pandas
+pyttsx3
+pytest
