@@ -34,11 +34,17 @@ Posture-Check is a real-time yoga posture correction system built with computer 
 ## Project Structure
 
 YogaPostureCorrection/
-- angles.json          # Reference joint angle ranges for all poses
+- angles.json          # Reference joint angle ranges for all poses - the actual output extraction.py produces
 - analysis.py          # Main script for pose detection, hints, UI, and auto/manual modes
-- extraction.py        # Builds angles.json from images inside Dataset/
-- Dataset/             # Contains pose reference folders (boat-pose, tree-pose, etc.)
+- extraction.py        # Builds angles.json from images inside dataset/
+- dataset/             # Not included in this repo - see note below
 - README.md            # Full project documentation
+
+The `dataset/` folder (pose reference images used to build `angles.json`) isn't committed here -
+the images were sourced from various sites for development and aren't mine to redistribute.
+`angles.json` (the actual derived angle ranges) is included and is all you need to run
+`analysis.py`. If you want to regenerate it yourself, drop your own pose images into
+`dataset/<pose-name>/` and run `extraction.py`.
 
 ## Workflow
 
