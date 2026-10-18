@@ -44,28 +44,28 @@ PROCESS_WIDTH = 640  # frames are downscaled to this width before MediaPipe runs
 STYLE = """
 <style>
 .block-container { padding-top: 2rem; max-width: 1200px; }
-h1 { font-weight: 700; letter-spacing: -0.02em; }
+h1 { font-weight: 700; letter-spacing: -0.02em; color: #e52521; }
 div[data-testid="stMetric"] {
-    background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+    background: #13213d; border: 1px solid #2a5ca8; border-radius: 10px;
     padding: 0.9rem 1rem;
 }
 div[data-testid="stMetricValue"] { font-size: 1.6rem; }
 .pc-card {
-    background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+    background: #13213d; border: 1px solid #2a5ca8; border-radius: 10px;
     padding: 1rem 1.2rem; margin-bottom: 0.8rem;
 }
 .pc-banner {
-    background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+    background: #13213d; border: 1px solid #2a5ca8; border-radius: 12px;
     padding: 3rem 1.5rem; text-align: center; color: #c9d1d9; font-size: 1.05rem;
 }
 .pc-status-good { color: #3fb950; font-weight: 600; }
-.pc-status-bad { color: #f85149; font-weight: 600; }
+.pc-status-bad { color: #e52521; font-weight: 600; }
 .pc-feature-card {
-    background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+    background: #13213d; border: 1px solid #2a5ca8; border-radius: 12px;
     padding: 1.3rem 1.4rem; height: 100%;
 }
-.pc-feature-card h4 { margin-top: 0; }
-.pc-stat { font-size: 2rem; font-weight: 700; color: #ff4b4b; }
+.pc-feature-card h4 { margin-top: 0; color: #5b9bf0; }
+.pc-stat { font-size: 2rem; font-weight: 700; color: #e52521; }
 .pc-stat-label { color: #8b949e; font-size: 0.9rem; }
 .pc-card ul, .pc-feature-card ul { margin: 0.4rem 0 0 0; padding-left: 1.2rem; color: #c9d1d9; }
 .pc-card li, .pc-feature-card li { margin-bottom: 0.35rem; }
@@ -116,22 +116,14 @@ def _empty_state(frame_slot, text: str) -> None:
 def home_tab():
     st.markdown(
         '<div class="pc-card" style="padding:2rem 2.2rem;">'
-        "<h2 style='margin-top:0;'>A webcam that actually watches your form</h2>"
+        "<h2 style='margin-top:0;'>A webcam that checks your form</h2>"
         "<p style='color:#c9d1d9; font-size:1.05rem; max-width:760px; line-height:1.6;'>"
-        "Point a regular webcam at yourself and this app tells you, in real time, whether "
-        "you're actually doing the movement right - not just whether you moved. It was built "
-        "around one idea: a mirror can show you your body, but it can't measure it. A camera "
-        "plus some joint-angle math can."
-        "</p>"
-        "<p style='color:#8b949e; font-size:0.98rem; max-width:760px;'>"
-        "There are two modes, and they solve genuinely different problems:"
+        "Point your webcam at yourself and get told, in real time, whether you're actually "
+        "doing the move right - not just whether you moved."
         "</p>"
         "<ul>"
-        "<li><b>Yoga</b> is a <i>pose-matching</i> problem - how close is your current stance "
-        "to a known-good reference, joint by joint?</li>"
-        "<li><b>Workout</b> is a <i>motion-tracking</i> problem - did a joint complete a full "
-        "range of motion, and did it do so without the usual compensations people fall into "
-        "when they're tired or rushing?</li>"
+        "<li><b>Yoga</b> - matches your pose against a reference, joint by joint</li>"
+        "<li><b>Workout</b> - counts reps and catches the usual form mistakes</li>"
         "</ul>"
         "</div>",
         unsafe_allow_html=True,
@@ -159,19 +151,16 @@ def home_tab():
             unsafe_allow_html=True,
         )
 
-    st.markdown("#### What each tab actually does")
+    st.markdown("#### What each tab does")
     c1, c2, c3 = st.columns(3)
     with c1:
         st.markdown(
             '<div class="pc-feature-card"><h4>Yoga</h4>'
             "<ul>"
-            "<li>Auto-detects which pose you're holding, or you can pick one yourself</li>"
-            "<li>Colors each joint on the skeleton overlay green or red depending on whether "
-            "it's within the reference range for that pose</li>"
-            "<li>Gives a plain-language correction per joint, e.g. \"Left Knee: increase by "
-            "12°\" instead of a raw number</li>"
-            "<li>Counts a hold as successful once you've kept good form for a few seconds "
-            "straight, not just touched it once</li>"
+            "<li>Auto-detect a pose, or pick one yourself</li>"
+            "<li>Skeleton turns red/green per joint</li>"
+            "<li>Tells you exactly what to fix, e.g. \"Left Knee: increase by 12°\"</li>"
+            "<li>Counts a hold once you've held good form a few seconds</li>"
             "</ul></div>",
             unsafe_allow_html=True,
         )
@@ -179,15 +168,10 @@ def home_tab():
         st.markdown(
             '<div class="pc-feature-card"><h4>Workout</h4>'
             "<ul>"
-            "<li>Six exercises: squats, push-ups, bicep curls, lunges, shoulder presses, and "
-            "lateral raises</li>"
-            "<li>Counts reps using an up-down-up state machine, so a noisy frame near the "
-            "threshold can't double-count a rep</li>"
-            "<li>Flags the specific form mistake most people actually make in that exercise - "
-            "knees caving in, elbows flaring out, the upper arm drifting forward, or raising "
-            "past shoulder height</li>"
-            "<li>Counting and form-checking are independent - a badly-formed rep still counts "
-            "as a rep, but you'll know it wasn't clean</li>"
+            "<li>Six exercises: squats, push-ups, curls, lunges, presses, raises</li>"
+            "<li>Counts reps without double-counting on a jittery frame</li>"
+            "<li>Flags the common mistake for each exercise - caving knees, flared elbows, "
+            "and so on</li>"
             "</ul></div>",
             unsafe_allow_html=True,
         )
@@ -195,56 +179,44 @@ def home_tab():
         st.markdown(
             '<div class="pc-feature-card"><h4>Session History</h4>'
             "<ul>"
-            "<li>Every session - yoga or workout - is written to a local SQLite database, no "
-            "account or internet connection involved</li>"
-            "<li>A reps-over-time line chart per exercise, so progress across sessions is "
-            "visible, not just the last one</li>"
-            "<li>One-click CSV export if you'd rather look at the raw numbers yourself</li>"
+            "<li>Every session saves locally (SQLite) - nothing online</li>"
+            "<li>Reps-over-time chart per exercise</li>"
+            "<li>One-click CSV export</li>"
             "</ul></div>",
             unsafe_allow_html=True,
         )
 
-    st.markdown("#### How the pose correction actually works")
+    st.markdown("#### How it actually works")
     h1, h2 = st.columns(2)
     with h1:
         st.markdown(
             '<div class="pc-feature-card"><h4>Under the hood</h4>'
             '<p class="pc-section-intro" style="margin-bottom:0.6rem;">No neural network makes '
-            "the pass/fail call here - it's closer to applied geometry:</p>"
+            "the pass/fail call - it's just geometry:</p>"
             "<ul>"
-            "<li>MediaPipe extracts 33 body landmarks per frame from the raw camera feed</li>"
-            "<li>Ten joint angles are computed from those landmarks using the standard "
-            "three-point vector/arccos formula</li>"
-            "<li>A short rolling average smooths the angles across recent frames, so a single "
-            "jittery frame doesn't flip a joint from green to red and back</li>"
-            "<li>Yoga angles are compared against per-pose reference ranges mined from a real "
-            "sample image set; workout angles are compared against fixed thresholds tuned by "
-            "hand and checked against test cases</li>"
+            "<li>MediaPipe tracks 33 body landmarks per frame</li>"
+            "<li>10 joint angles, computed with basic vector math</li>"
+            "<li>Smoothed across a few frames so it doesn't flicker</li>"
+            "<li>Yoga compares to reference ranges from sample images; workout uses "
+            "hand-tuned thresholds</li>"
             "</ul></div>",
             unsafe_allow_html=True,
         )
     with h2:
         st.markdown(
-            '<div class="pc-feature-card"><h4>Being honest about the limits</h4>'
-            '<p class="pc-section-intro" style="margin-bottom:0.6rem;">This is a portfolio '
-            "project built by one person, not a shipped fitness product, and it shows in a few "
-            "places worth naming up front:</p>"
+            '<div class="pc-feature-card"><h4>Known limits</h4>'
             "<ul>"
-            "<li>Pose auto-detection was evaluated with leave-one-out cross-validation on a "
-            "small sample set - 88.9% overall accuracy, but a couple of poses sit closer to "
-            "the 60-70% range, documented in the README rather than hidden</li>"
-            "<li>Workout form thresholds are reasonable approximations, not biomechanically "
-            "validated coaching advice</li>"
-            "<li>Everything assumes one person, mostly facing the camera, in a single stable "
-            "frame - it isn't built for multiple people or extreme camera angles</li>"
+            "<li>Auto-detect tested at 88.9% accuracy overall - a few poses are weaker, see "
+            "the README for the full breakdown</li>"
+            "<li>Form checks are reasonable guesses, not real coaching advice</li>"
+            "<li>Works best with one person facing the camera</li>"
             "</ul></div>",
             unsafe_allow_html=True,
         )
 
     st.markdown(
-        '<p style="color:#8b949e; margin-top:1.6rem;">Ready to try it? Head to the '
-        "<b>Yoga</b> or <b>Workout</b> tab above - each one walks you through getting into "
-        "frame before anything starts tracking.</p>",
+        '<p style="color:#8b949e; margin-top:1.6rem;">Try it - head to <b>Yoga</b> or '
+        "<b>Workout</b> above.</p>",
         unsafe_allow_html=True,
     )
 
@@ -256,9 +228,8 @@ def yoga_tab():
     col1, col2 = st.columns([3, 1], gap="large")
     with col2:
         st.markdown(
-            '<p class="pc-sidebar-note">Auto-detect figures out which pose you\'re holding on '
-            "its own after a short hold; Manual is useful if you want to practice one specific "
-            "pose and skip the guessing step.</p>",
+            '<p class="pc-sidebar-note">Auto-detect figures out your pose after a short hold. '
+            "Manual skips the guessing if you want to practice one pose.</p>",
             unsafe_allow_html=True,
         )
         st.markdown('<div class="pc-card">', unsafe_allow_html=True)
@@ -376,10 +347,8 @@ def workout_tab():
     col1, col2 = st.columns([3, 1], gap="large")
     with col2:
         st.markdown(
-            '<p class="pc-sidebar-note">Pick the exercise you\'re about to do - each one '
-            "tracks a different joint and watches for a different common mistake, so reps and "
-            "form warnings won't line up correctly unless the exercise matches what's on "
-            "screen.</p>",
+            '<p class="pc-sidebar-note">Pick the exercise you\'re doing - reps and form '
+            "warnings only make sense if it matches what's on screen.</p>",
             unsafe_allow_html=True,
         )
         st.markdown('<div class="pc-card">', unsafe_allow_html=True)
@@ -482,10 +451,7 @@ def history_tab():
 def main():
     st.markdown(STYLE, unsafe_allow_html=True)
     st.title("Posture-Check")
-    st.caption(
-        "Real-time pose correction and rep counting, driven by real joint-angle math - not a "
-        "black-box model you have to take on faith."
-    )
+    st.caption("Real-time pose correction and rep counting, powered by actual joint-angle math.")
     tab0, tab1, tab2, tab3 = st.tabs(["Home", "Yoga", "Workout", "Session History"])
     with tab0:
         home_tab()
