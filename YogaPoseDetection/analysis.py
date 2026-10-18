@@ -12,6 +12,9 @@ import mediapipe as mp
 import geometry
 import feedback
 import renderer
+import storage
+import workout
+from voice import VoiceFeedback
 from workout import EXERCISES, RepCounter
 
 FULL_BODY_THRESHOLD = 0.80
@@ -38,7 +41,7 @@ def smooth_angles(buffer: list[dict[str, float]], joints: dict) -> dict[str, flo
     return smoothed
 
 
-def run_yoga_mode(cap, pose_model, angle_data: dict, auto_detect: bool, live_angles_on: bool):
+def run_yoga_mode(cap, pose_model, angle_data: dict, auto_detect: bool, live_angles_on: bool, voice: VoiceFeedback | None = None):
     pose_list = list(angle_data.keys())
     selected_pose = None
     if not auto_detect:
@@ -52,6 +55,7 @@ def run_yoga_mode(cap, pose_model, angle_data: dict, auto_detect: bool, live_ang
     detection_start_time = None
     start_message_time = time.time()
     hold_start = None
+    session_start = time.time()
 
     while True:
         ret, frame = cap.read()
@@ -116,7 +120,13 @@ def run_yoga_mode(cap, pose_model, angle_data: dict, auto_detect: bool, live_ang
 
         if hold_time >= HOLD_TIME_REQUIRED:
             print("\nPose held correctly for 5 seconds. Done!")
+            storage.log_session(storage.SessionRecord(
+                mode="yoga", name=selected_pose, duration_seconds=time.time() - session_start,
+            ))
             return
+
+        if voice and hints:
+            voice.say(hints[0])
 
         bad_joints = renderer.bad_joints_from_hints(hints)
         renderer.draw_skeleton(frame, landmarks, bad_joints)
@@ -129,9 +139,10 @@ def run_yoga_mode(cap, pose_model, angle_data: dict, auto_detect: bool, live_ang
             return
 
 
-def run_workout_mode(cap, pose_model, exercise: str):
+def run_workout_mode(cap, pose_model, exercise: str, voice: VoiceFeedback | None = None):
     counter = RepCounter(exercise=exercise)
     label = EXERCISES[exercise]["label"]
+    session_start = time.time()
 
     while True:
         ret, frame = cap.read()
@@ -146,18 +157,31 @@ def run_workout_mode(cap, pose_model, exercise: str):
             panel = renderer.draw_side_panel(exercise.replace("_", " ").title(), f"Reps: {counter.count}", [], {}, frame_h, PANEL_WIDTH)
             cv2.imshow("Yoga", renderer.compose_frame(frame, panel))
             if cv2.waitKey(1) == 27:
-                return
+                break
             continue
 
         angle = counter.update(results.pose_landmarks.landmark)
+        form_warning = workout.check_form(exercise, results.pose_landmarks.landmark)
+        if form_warning:
+            counter.form_warnings += 1
+            if voice:
+                voice.say(form_warning)
         renderer.draw_skeleton(frame, results.pose_landmarks, set())
         live_angles = {label: angle} if angle is not None else {}
+        info_lines = [f"State: {counter.state}"]
+        if form_warning:
+            info_lines.append(form_warning)
         panel = renderer.draw_side_panel(
-            exercise.replace("_", " ").title(), f"Reps: {counter.count}", [f"State: {counter.state}"], live_angles, frame_h, PANEL_WIDTH,
+            exercise.replace("_", " ").title(), f"Reps: {counter.count}", info_lines, live_angles, frame_h, PANEL_WIDTH,
         )
         cv2.imshow("Yoga", renderer.compose_frame(frame, panel))
         if cv2.waitKey(1) == 27:
-            return
+            break
+
+    storage.log_session(storage.SessionRecord(
+        mode="workout", name=exercise, duration_seconds=time.time() - session_start,
+        reps=counter.count, form_warnings=counter.form_warnings,
+    ))
 
 
 def main():
@@ -166,6 +190,8 @@ def main():
     print("2) Yoga - Manual Pose Selection")
     print("3) Workout - Rep Counter")
     mode = input("Enter choice (1/2/3): ").strip()
+    voice_choice = input("Enable voice feedback? (y/n): ").strip().lower() == "y"
+    voice = VoiceFeedback(enabled=voice_choice)
 
     cap = cv2.VideoCapture(0)
     cv2.namedWindow("Yoga", cv2.WINDOW_NORMAL)
@@ -175,14 +201,14 @@ def main():
         if mode in ("1", "2"):
             angle_data = load_angle_data()
             live_choice = input("\nEnable live angle display? (y/n): ").strip().lower() == "y"
-            run_yoga_mode(cap, pose_model, angle_data, auto_detect=(mode == "1"), live_angles_on=live_choice)
+            run_yoga_mode(cap, pose_model, angle_data, auto_detect=(mode == "1"), live_angles_on=live_choice, voice=voice)
         elif mode == "3":
             print("\nAvailable exercises:")
             names = list(EXERCISES.keys())
             for i, name in enumerate(names):
                 print(f"{i + 1}) {name}")
             idx = int(input("Select exercise number: "))
-            run_workout_mode(cap, pose_model, names[idx - 1])
+            run_workout_mode(cap, pose_model, names[idx - 1], voice=voice)
         else:
             print("Invalid choice.")
 
