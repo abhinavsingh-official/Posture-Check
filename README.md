@@ -13,6 +13,23 @@ builds that: real joint-angle ranges mined from reference images (yoga), a rep-c
 machine with its own form checks (workout), and a dashboard that remembers what you did session
 to session.
 
+## Screenshots
+
+**Home** - real stats pulled live from the data on disk, plus an honest breakdown of what each
+tab does and how the pose-correction math actually works:
+
+![Home tab](screenshots/home.png)
+
+**Yoga mode** - auto-detect vs. manual pose selection, live angle display, and voice feedback,
+before the camera starts:
+
+![Yoga tab](screenshots/yoga.png)
+
+**Workout mode** - pick an exercise, see its rep-counting joint and form check explained up
+front:
+
+![Workout tab](screenshots/workout.png)
+
 ## How it works
 
 **Yoga mode** - MediaPipe extracts 33 body landmarks per frame. For each of 10 tracked joints
