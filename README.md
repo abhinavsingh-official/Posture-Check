@@ -1,8 +1,7 @@
 # Posture-Check
 
 A real-time AI fitness coach built on computer vision: holds you to real joint-angle references
-for yoga poses, counts reps for dynamic exercises, and catches bad form on both - not just a
-yoga pose checker.
+for yoga poses, counts reps for dynamic exercises, and catches bad form on both.
 
 ## Why this exists
 
