@@ -40,15 +40,15 @@
             "angle_max": 99.5,
             "tip": "Adjust your right hip."
         },
-        "spine": {
-            "angle_min": 39.3,
-            "angle_max": 89.3,
-            "tip": "Adjust your spine."
-        },
         "neck": {
             "angle_min": 84.1,
             "angle_max": 134.1,
             "tip": "Adjust your neck."
+        },
+        "spine": {
+            "angle_min": 39.3,
+            "angle_max": 89.3,
+            "tip": "Adjust your spine."
         }
     },
     "bow-pose": {
@@ -92,15 +92,15 @@
             "angle_max": 118.2,
             "tip": "Adjust your right hip."
         },
-        "spine": {
-            "angle_min": 58.6,
-            "angle_max": 108.6,
-            "tip": "Adjust your spine."
-        },
         "neck": {
             "angle_min": 74.2,
             "angle_max": 124.2,
             "tip": "Adjust your neck."
+        },
+        "spine": {
+            "angle_min": 58.6,
+            "angle_max": 108.6,
+            "tip": "Adjust your spine."
         }
     },
     "bridge-pose": {
@@ -144,15 +144,15 @@
             "angle_max": 110.7,
             "tip": "Adjust your right hip."
         },
-        "spine": {
-            "angle_min": 46.5,
-            "angle_max": 96.5,
-            "tip": "Adjust your spine."
-        },
         "neck": {
             "angle_min": 92.2,
             "angle_max": 142.2,
             "tip": "Adjust your neck."
+        },
+        "spine": {
+            "angle_min": 46.5,
+            "angle_max": 96.5,
+            "tip": "Adjust your spine."
         }
     },
     "camel-pose": {
@@ -196,15 +196,15 @@
             "angle_max": 116.5,
             "tip": "Adjust your right hip."
         },
-        "spine": {
-            "angle_min": 56.8,
-            "angle_max": 106.8,
-            "tip": "Adjust your spine."
-        },
         "neck": {
             "angle_min": 63.5,
             "angle_max": 113.5,
             "tip": "Adjust your neck."
+        },
+        "spine": {
+            "angle_min": 56.8,
+            "angle_max": 106.8,
+            "tip": "Adjust your spine."
         }
     },
     "chair-pose": {
@@ -248,15 +248,15 @@
             "angle_max": 102.2,
             "tip": "Adjust your right hip."
         },
-        "spine": {
-            "angle_min": 35.9,
-            "angle_max": 85.9,
-            "tip": "Adjust your spine."
-        },
         "neck": {
             "angle_min": 107.4,
             "angle_max": 157.4,
             "tip": "Adjust your neck."
+        },
+        "spine": {
+            "angle_min": 35.9,
+            "angle_max": 85.9,
+            "tip": "Adjust your spine."
         }
     },
     "child-pose": {
@@ -300,15 +300,15 @@
             "angle_max": 143.1,
             "tip": "Adjust your right hip."
         },
-        "spine": {
-            "angle_min": 34.4,
-            "angle_max": 84.4,
-            "tip": "Adjust your spine."
-        },
         "neck": {
             "angle_min": 90.5,
             "angle_max": 140.5,
             "tip": "Adjust your neck."
+        },
+        "spine": {
+            "angle_min": 34.4,
+            "angle_max": 84.4,
+            "tip": "Adjust your spine."
         }
     },
     "cobra-pose": {
@@ -352,15 +352,15 @@
             "angle_max": 114.1,
             "tip": "Adjust your right hip."
         },
-        "spine": {
-            "angle_min": 55.4,
-            "angle_max": 105.4,
-            "tip": "Adjust your spine."
-        },
         "neck": {
             "angle_min": 68.2,
             "angle_max": 118.2,
             "tip": "Adjust your neck."
+        },
+        "spine": {
+            "angle_min": 55.4,
+            "angle_max": 105.4,
+            "tip": "Adjust your spine."
         }
     },
     "downdog-pose": {
@@ -404,15 +404,15 @@
             "angle_max": 120.3,
             "tip": "Adjust your right hip."
         },
-        "spine": {
-            "angle_min": 44.6,
-            "angle_max": 94.6,
-            "tip": "Adjust your spine."
-        },
         "neck": {
             "angle_min": 84.8,
             "angle_max": 134.8,
             "tip": "Adjust your neck."
+        },
+        "spine": {
+            "angle_min": 44.6,
+            "angle_max": 94.6,
+            "tip": "Adjust your spine."
         }
     },
     "extendedsideangle-pose": {
@@ -456,21 +456,21 @@
             "angle_max": 145.0,
             "tip": "Adjust your right hip."
         },
-        "spine": {
-            "angle_min": 35.6,
-            "angle_max": 85.6,
-            "tip": "Adjust your spine."
-        },
         "neck": {
             "angle_min": 23.0,
             "angle_max": 73.0,
             "tip": "Adjust your neck."
+        },
+        "spine": {
+            "angle_min": 35.6,
+            "angle_max": 85.6,
+            "tip": "Adjust your spine."
         }
     },
     "goddess-pose": {
         "left_knee": {
-            "angle_min": 16.2,
-            "angle_max": 66.2,
+            "angle_min": 16.1,
+            "angle_max": 66.1,
             "tip": "Adjust your left knee."
         },
         "right_knee": {
@@ -489,8 +489,8 @@
             "tip": "Adjust your right elbow."
         },
         "left_shoulder": {
-            "angle_min": 72.1,
-            "angle_max": 122.1,
+            "angle_min": 72.0,
+            "angle_max": 122.0,
             "tip": "Adjust your left shoulder."
         },
         "right_shoulder": {
@@ -504,19 +504,19 @@
             "tip": "Adjust your left hip."
         },
         "right_hip": {
-            "angle_min": 76.2,
-            "angle_max": 126.2,
+            "angle_min": 76.1,
+            "angle_max": 126.1,
             "tip": "Adjust your right hip."
-        },
-        "spine": {
-            "angle_min": 48.9,
-            "angle_max": 98.9,
-            "tip": "Adjust your spine."
         },
         "neck": {
             "angle_min": -0.7,
             "angle_max": 49.3,
             "tip": "Adjust your neck."
+        },
+        "spine": {
+            "angle_min": 48.9,
+            "angle_max": 98.9,
+            "tip": "Adjust your spine."
         }
     },
     "locust-pose": {
@@ -560,15 +560,15 @@
             "angle_max": 122.2,
             "tip": "Adjust your right hip."
         },
-        "spine": {
-            "angle_min": 38.7,
-            "angle_max": 88.7,
-            "tip": "Adjust your spine."
-        },
         "neck": {
             "angle_min": 93.4,
             "angle_max": 143.4,
             "tip": "Adjust your neck."
+        },
+        "spine": {
+            "angle_min": 38.7,
+            "angle_max": 88.7,
+            "tip": "Adjust your spine."
         }
     },
     "mountain-pose": {
@@ -612,15 +612,15 @@
             "angle_max": 112.8,
             "tip": "Adjust your right hip."
         },
-        "spine": {
-            "angle_min": 49.8,
-            "angle_max": 99.8,
-            "tip": "Adjust your spine."
-        },
         "neck": {
             "angle_min": -3.3,
             "angle_max": 46.7,
             "tip": "Adjust your neck."
+        },
+        "spine": {
+            "angle_min": 49.8,
+            "angle_max": 99.8,
+            "tip": "Adjust your spine."
         }
     },
     "puppy-pose": {
@@ -664,15 +664,15 @@
             "angle_max": 120.4,
             "tip": "Adjust your right hip."
         },
-        "spine": {
-            "angle_min": 49.1,
-            "angle_max": 99.1,
-            "tip": "Adjust your spine."
-        },
         "neck": {
             "angle_min": 98.8,
             "angle_max": 148.8,
             "tip": "Adjust your neck."
+        },
+        "spine": {
+            "angle_min": 49.1,
+            "angle_max": 99.1,
+            "tip": "Adjust your spine."
         }
     },
     "reversewarrior-pose": {
@@ -716,15 +716,15 @@
             "angle_max": 149.4,
             "tip": "Adjust your right hip."
         },
-        "spine": {
-            "angle_min": 62.5,
-            "angle_max": 112.5,
-            "tip": "Adjust your spine."
-        },
         "neck": {
             "angle_min": 47.2,
             "angle_max": 97.2,
             "tip": "Adjust your neck."
+        },
+        "spine": {
+            "angle_min": 62.5,
+            "angle_max": 112.5,
+            "tip": "Adjust your spine."
         }
     },
     "seated-pose": {
@@ -768,15 +768,15 @@
             "angle_max": 134.5,
             "tip": "Adjust your right hip."
         },
-        "spine": {
-            "angle_min": 58.9,
-            "angle_max": 108.9,
-            "tip": "Adjust your spine."
-        },
         "neck": {
             "angle_min": 12.0,
             "angle_max": 62.0,
             "tip": "Adjust your neck."
+        },
+        "spine": {
+            "angle_min": 58.9,
+            "angle_max": 108.9,
+            "tip": "Adjust your spine."
         }
     },
     "sphinx-pose": {
@@ -820,15 +820,15 @@
             "angle_max": 118.7,
             "tip": "Adjust your right hip."
         },
-        "spine": {
-            "angle_min": 52.7,
-            "angle_max": 102.7,
-            "tip": "Adjust your spine."
-        },
         "neck": {
             "angle_min": 85.2,
             "angle_max": 135.2,
             "tip": "Adjust your neck."
+        },
+        "spine": {
+            "angle_min": 52.7,
+            "angle_max": 102.7,
+            "tip": "Adjust your spine."
         }
     },
     "tree-pose": {
@@ -872,15 +872,15 @@
             "angle_max": 97.0,
             "tip": "Adjust your right hip."
         },
-        "spine": {
-            "angle_min": 22.7,
-            "angle_max": 72.7,
-            "tip": "Adjust your spine."
-        },
         "neck": {
             "angle_min": 3.0,
             "angle_max": 53.0,
             "tip": "Adjust your neck."
+        },
+        "spine": {
+            "angle_min": 22.7,
+            "angle_max": 72.7,
+            "tip": "Adjust your spine."
         }
     },
     "triangle-pose": {
@@ -924,15 +924,15 @@
             "angle_max": 150.6,
             "tip": "Adjust your right hip."
         },
-        "spine": {
-            "angle_min": 21.3,
-            "angle_max": 71.3,
-            "tip": "Adjust your spine."
-        },
         "neck": {
             "angle_min": 25.3,
             "angle_max": 75.3,
             "tip": "Adjust your neck."
+        },
+        "spine": {
+            "angle_min": 21.3,
+            "angle_max": 71.3,
+            "tip": "Adjust your spine."
         }
     },
     "upwardsalute-pose": {
@@ -976,15 +976,15 @@
             "angle_max": 118.3,
             "tip": "Adjust your right hip."
         },
-        "spine": {
-            "angle_min": 47.4,
-            "angle_max": 97.4,
-            "tip": "Adjust your spine."
-        },
         "neck": {
             "angle_min": 8.6,
             "angle_max": 58.6,
             "tip": "Adjust your neck."
+        },
+        "spine": {
+            "angle_min": 47.5,
+            "angle_max": 97.5,
+            "tip": "Adjust your spine."
         }
     },
     "warrior1-pose": {
@@ -1028,15 +1028,15 @@
             "angle_max": 139.1,
             "tip": "Adjust your right hip."
         },
-        "spine": {
-            "angle_min": 48.5,
-            "angle_max": 98.5,
-            "tip": "Adjust your spine."
-        },
         "neck": {
             "angle_min": 105.5,
             "angle_max": 155.5,
             "tip": "Adjust your neck."
+        },
+        "spine": {
+            "angle_min": 48.5,
+            "angle_max": 98.5,
+            "tip": "Adjust your spine."
         }
     },
     "warrior2-pose": {
@@ -1080,15 +1080,15 @@
             "angle_max": 95.3,
             "tip": "Adjust your right hip."
         },
-        "spine": {
-            "angle_min": 35.2,
-            "angle_max": 85.2,
-            "tip": "Adjust your spine."
-        },
         "neck": {
             "angle_min": 34.2,
             "angle_max": 84.2,
             "tip": "Adjust your neck."
+        },
+        "spine": {
+            "angle_min": 35.2,
+            "angle_max": 85.2,
+            "tip": "Adjust your spine."
         }
     }
 }
