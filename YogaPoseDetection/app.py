@@ -431,9 +431,34 @@ def history_tab():
         return
 
     df = pd.DataFrame(sessions)
-    st.dataframe(df, use_container_width=True)
-
     workout_df = df[df["mode"] == "workout"]
+    yoga_df = df[df["mode"] == "yoga"]
+
+    st.markdown("#### Personal bests")
+    b1, b2, b3 = st.columns(3)
+    with b1:
+        best_reps = int(workout_df["reps"].max()) if not workout_df.empty else 0
+        st.markdown(
+            f'<div class="pc-feature-card"><div class="pc-stat">{best_reps}</div>'
+            '<div class="pc-stat-label">Most reps in a single session</div></div>',
+            unsafe_allow_html=True,
+        )
+    with b2:
+        longest_hold = yoga_df["duration_seconds"].max() if not yoga_df.empty else 0
+        st.markdown(
+            f'<div class="pc-feature-card"><div class="pc-stat">{longest_hold:.0f}s</div>'
+            '<div class="pc-stat-label">Longest yoga session</div></div>',
+            unsafe_allow_html=True,
+        )
+    with b3:
+        st.markdown(
+            f'<div class="pc-feature-card"><div class="pc-stat">{len(df)}</div>'
+            '<div class="pc-stat-label">Total sessions logged</div></div>',
+            unsafe_allow_html=True,
+        )
+
+    st.markdown("#### Full history")
+    st.dataframe(df, use_container_width=True)
     if not workout_df.empty:
         for exercise_name in workout_df["name"].unique():
             st.subheader(f"{exercise_name.replace('_', ' ').title()} - reps over time")

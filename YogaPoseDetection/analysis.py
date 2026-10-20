@@ -5,6 +5,7 @@ Workout (count reps of a dynamic exercise)."""
 
 import json
 import time
+from pathlib import Path
 
 import cv2
 import mediapipe as mp
@@ -27,7 +28,15 @@ PANEL_WIDTH = 380
 mp_pose = mp.solutions.pose
 
 
-def load_angle_data(path: str = "angles.json") -> dict:
+DEFAULT_ANGLES_PATH = Path(__file__).resolve().parent / "angles.json"
+
+
+def load_angle_data(path: str | Path = DEFAULT_ANGLES_PATH) -> dict:
+    # A bare relative "angles.json" only works if the caller's cwd happens
+    # to be this directory - `streamlit run YogaPoseDetection/app.py` from
+    # the repo root (exactly what the README tells people to run) has a
+    # different cwd, so the default needs to be anchored to this file,
+    # not to whatever process launched it.
     with open(path) as f:
         return json.load(f)
 
