@@ -40,19 +40,19 @@ becomes a corrective hint ("Left Knee: increase by 12.0°"); holding every angle
 continuous seconds completes the pose.
 
 **Workout mode** - a different problem: counting reps of a dynamic exercise (squats, push-ups,
-bicep curls), not holding a static position. Each exercise tracks one representative joint angle
-through a simple up/down state machine - crossing below a "down" threshold then back above an
-"up" threshold counts one rep, which avoids double-counting on a single noisy frame near a raw
-threshold. A second, independent check flags common form mistakes for that exercise (e.g. knees
-caving inward on a squat) - a rep still counts if the form is bad, since you did complete it, but
-the warning is logged and voiced.
+bicep curls, lunges, shoulder presses, lateral raises), not holding a static position. Each
+exercise tracks one representative joint angle through a simple up/down state machine - crossing
+below a "down" threshold then back above an "up" threshold counts one rep, which avoids
+double-counting on a single noisy frame near a raw threshold. A second, independent check flags
+common form mistakes for that exercise (e.g. knees caving inward on a squat) - a rep still counts
+if the form is bad, since you did complete it, but the warning is logged and voiced.
 
 ## Features
 
 - **Yoga**: auto-detect or manual pose selection, live angle display, a skeleton overlay colored
   red/green per joint so you can see exactly what's off, 5-second hold-to-complete
-- **Workout**: rep counting for squats, push-ups, and bicep curls, with real-time form warnings
-  (not just a rep count)
+- **Workout**: rep counting for six exercises (squats, push-ups, bicep curls, lunges, shoulder
+  presses, lateral raises), with real-time form warnings (not just a rep count)
 - **Session history**: every session (yoga or workout) is logged to a local SQLite database, with
   a reps-over-time trend view and a CSV export
 - **Voice feedback**: offline text-to-speech announces hints/form corrections out loud, no
@@ -117,8 +117,13 @@ pip install -r requirements.txt
 **Streamlit app (recommended):**
 
 ```bash
-streamlit run YogaPoseDetection/app.py
+cd YogaPoseDetection
+streamlit run app.py
 ```
+
+(Streamlit looks for its theme config relative to the current directory, not the script's own
+location - running it from the repo root instead would still work, but without the custom
+theme.)
 
 **Original OpenCV window:**
 
