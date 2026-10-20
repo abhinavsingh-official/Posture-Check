@@ -83,3 +83,74 @@ def draw_side_panel(title: str, status_line: str, hints: list[str], live_angles:
 def compose_frame(frame, panel):
     panel = cv2.resize(panel, (panel.shape[1], frame.shape[0]))
     return np.hstack([frame, panel])
+
+
+# Sticker icons are drawn procedurally with OpenCV primitives rather than
+# loaded from image files - no external asset/licensing question, and it
+# keeps the whole gesture -> sticker pipeline self-contained in code.
+STICKER_COLORS = {
+    "wave": (120, 220, 255),
+    "fist_burst": (80, 80, 255),
+    "sparkle": (255, 220, 120),
+    "thumbs_up": (120, 255, 150),
+}
+
+
+def _draw_sparkle(canvas, center, radius, color):
+    cx, cy = center
+    for angle_deg in range(0, 360, 45):
+        angle = np.deg2rad(angle_deg)
+        x2 = int(cx + radius * np.cos(angle))
+        y2 = int(cy + radius * np.sin(angle))
+        cv2.line(canvas, (cx, cy), (x2, y2), color, 3)
+    cv2.circle(canvas, center, max(radius // 3, 4), WHITE, -1)
+
+
+def _draw_wave(canvas, center, radius, color):
+    cx, cy = center
+    for i in range(5):
+        x = cx - radius + i * (radius // 2)
+        cv2.ellipse(canvas, (x, cy), (radius // 6, radius // 2), 0, 180, 360, color, 4)
+
+
+def _draw_fist_burst(canvas, center, radius, color):
+    cx, cy = center
+    cv2.circle(canvas, center, radius // 2, color, -1)
+    for angle_deg in range(0, 360, 30):
+        angle = np.deg2rad(angle_deg)
+        x1 = int(cx + (radius // 2) * np.cos(angle))
+        y1 = int(cy + (radius // 2) * np.sin(angle))
+        x2 = int(cx + radius * np.cos(angle))
+        y2 = int(cy + radius * np.sin(angle))
+        cv2.line(canvas, (x1, y1), (x2, y2), color, 2)
+
+
+def _draw_thumbs_up(canvas, center, radius, color):
+    cx, cy = center
+    cv2.rectangle(canvas, (cx - radius // 3, cy), (cx + radius // 3, cy + radius), color, -1)
+    cv2.circle(canvas, (cx, cy - radius // 3), radius // 3, color, -1)
+    cv2.rectangle(canvas, (cx - radius // 6, cy - radius), (cx + radius // 6, cy - radius // 3), color, -1)
+
+
+_STICKER_DRAWERS = {
+    "wave": _draw_wave,
+    "fist_burst": _draw_fist_burst,
+    "sparkle": _draw_sparkle,
+    "thumbs_up": _draw_thumbs_up,
+}
+
+
+def draw_sticker(frame, position: tuple[int, int], sticker: str, radius: int = 60, alpha: float = 0.85) -> None:
+    """Composites a procedural sticker icon at `position`, alpha-blended
+    onto `frame` in place. `sticker` is one of gestures.GESTURE_STICKERS'
+    values; an unrecognized name is a no-op rather than an error, since a
+    gesture with no mapped sticker is a normal (not exceptional) case."""
+    drawer = _STICKER_DRAWERS.get(sticker)
+    if drawer is None:
+        return
+    color = STICKER_COLORS.get(sticker, ACCENT)
+
+    overlay = frame.copy()
+    cv2.circle(overlay, position, radius + 15, (30, 30, 30), -1)
+    drawer(overlay, position, radius, color)
+    cv2.addWeighted(overlay, alpha, frame, 1 - alpha, 0, dst=frame)
