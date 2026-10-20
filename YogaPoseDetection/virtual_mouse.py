@@ -13,17 +13,19 @@ leave the cursor stuck mid-screen."""
 import time
 from dataclasses import dataclass
 
-import pyautogui
-from pynput.mouse import Button, Controller
-
 from geometry import calculate_angle
-
-pyautogui.FAILSAFE = True  # moving the real cursor to a screen corner aborts pyautogui actions
 
 CLICK_ANGLE_THRESHOLD = 50  # degrees; a finger curled tighter than this counts as "closed"
 AUTO_DISABLE_AFTER_SECONDS = 3  # no-hand timeout before cursor control turns itself off
 
-mouse = Controller()
+# pyautogui and pynput's mouse Controller both try to talk to a real
+# display server as soon as they're imported/constructed (pynput's
+# mouseinfo dependency reads $DISPLAY directly) - fine on a real desktop,
+# but it means merely importing this module crashes in any headless
+# environment with no display, including CI. Every test in
+# tests/test_virtual_mouse.py exercises pure landmark-angle logic and
+# never needs either library, so both are imported lazily, only once
+# cursor control is actually used on a real machine.
 
 
 @dataclass
@@ -66,11 +68,15 @@ def _distance(a: tuple[float, float], b: tuple[float, float]) -> float:
 
 
 def move_cursor(landmarks: HandLandmarks2D, screen_width: int, screen_height: int) -> None:
+    import pyautogui
+    pyautogui.FAILSAFE = True  # moving the real cursor to a screen corner aborts pyautogui actions
     index_tip = landmarks[8]
     pyautogui.moveTo(int(index_tip[0] * screen_width), int(index_tip[1] * screen_height), _pause=False)
 
 
 def click() -> None:
+    from pynput.mouse import Button, Controller
+    mouse = Controller()
     mouse.press(Button.left)
     mouse.release(Button.left)
 
