@@ -14,3 +14,6 @@ streamlit==1.38.0
 pandas
 pyttsx3
 pytest
+ai-edge-litert==2.3.0  # lightweight TFLite inference for the gesture-sticker mode's vendored model
+PyAutoGUI==0.9.54  # Virtual Mouse mode - moves the real system cursor
+pynput==1.8.2  # Virtual Mouse mode - mouse click events
