@@ -19,9 +19,6 @@ text-to-speech.
 ![Yoga tab](screenshots/yoga.png)
 ![Workout tab](screenshots/workout.png)
 ![Sticker icons](screenshots/sticker_icons.png)
-![Air Canvas tab](screenshots/air_canvas.png)
-![Virtual Mouse tab](screenshots/virtual_mouse.png)
-![Drowsiness Monitor tab](screenshots/drowsiness_monitor.png)
 
 ## How to run
 
